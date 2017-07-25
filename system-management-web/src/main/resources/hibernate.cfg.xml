@@ -16,7 +16,7 @@
 		<!-- Cria a estrutura da tabela com base na persistencia mapeada -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		
-		<mapping class="usuario.Usuario"/>
+		<mapping class="usuario.Usuario"/>  
 		
 	</session-factory>
 </hibernate-configuration>
