@@ -22,7 +22,7 @@
     <servlet-name>FacesServlet</servlet-name>
     <url-pattern>*.jsf</url-pattern>
   </servlet-mapping>
-  <!-- Cria a conexao com o banco pelo servido abri e fecha pela nevegação open show in view -->
+  <!-- Cria um filter de conexao com o banco pelo servido abri e fecha pela nevegação open show in view -->
   <filter>
   	<filter-name>conexaoFilter</filter-name>
   	<filter-class>web.filter.ConexaoHibernateFilter</filter-class>
@@ -31,4 +31,40 @@
   	<filter-name>conexaoFilter</filter-name>
   	<url-pattern>*.jsf</url-pattern>
   </filter-mapping>
+  
+  <!-- Configure DataSource JNDI -->
+  <resource-ref>
+    <description>DataSource dataSource</description>
+    <res-ref-name>jdbc/dataSource</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+    <res-sharing-scope>Shareable</res-sharing-scope>
+ </resource-ref>
+ 
+ <!-- Spring Security -->
+ <!--  <context-param>
+   <param-name>contextConfigLocation</param-name>
+    <param-value>
+﻿      ﻿        /WEB-INF/applicationContext.xml
+﻿      ﻿        /WEB-INF/applicationContext-security.xml
+    </param-value>
+ </context-param> -->
+ <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  
+   </filter>
+   <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*jsf</url-pattern>
+   </filter-mapping>
+   <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+   </listener> 
+   
+ <!-- TO EXECUTE EL 3.0 -->
+ <context-param>
+        <param-name>com.sun.faces.expressionFactory</param-name>
+        <param-value>com.sun.el.ExpressionFactoryImpl</param-value>
+ </context-param>  
+ <!-- THE END --> 
 </web-app>

@@ -22,6 +22,11 @@
         <id>jboss</id>
         <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
     </repository>
+    <repository>
+        <id>spring-milestones</id>
+        <name>Spring Milestones</name>
+        <url>https://repo.spring.io/libs-milestone</url>
+    </repository>
   </repositories> 
 
   <!-- UTF-8 -->
@@ -31,36 +36,36 @@
   
   <!-- JSF 2.2 -->
   <dependencies>  
-    <dependency>
+  <dependency>
         <groupId>javax.faces</groupId>
         <artifactId>javax.faces-api</artifactId>
         <version>2.2</version>
-    </dependency>
-    <dependency>
+  </dependency>
+  <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>jstl</artifactId>
         <version>1.2</version>
-    </dependency>
-    <dependency>
+  </dependency>
+  <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>servlet-api</artifactId>
         <version>2.5</version>
         </dependency>
-    <dependency>
+  <dependency>
         <groupId>commons-beanutils</groupId>
         <artifactId>commons-beanutils</artifactId>
         <version>1.7.0</version>
-    </dependency>
-    <dependency>
+  </dependency>
+  <dependency>
         <groupId>commons-digester</groupId>
         <artifactId>commons-digester</artifactId>
         <version>2.1</version>
-    </dependency>
-    <dependency>
+  </dependency>
+  <dependency>
         <groupId>commons-logging</groupId>
         <artifactId>commons-logging</artifactId>
         <version>1.1.1</version>
-    </dependency>
+  </dependency>
   <!-- THE END -->
     
   <!-- HIBERNATE 3.5.0 -->
@@ -68,48 +73,95 @@
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-annotations</artifactId>
         <version>3.5.0-Final</version>
-    </dependency>
-    <dependency>
+  </dependency>
+  <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-core</artifactId>
         <version>3.5.0-Final</version>
-    </dependency>
-    <dependency>
+  </dependency>
+  <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-entitymanager</artifactId>
         <version>3.5.0-Final</version>
-    </dependency>
-    <dependency>
+  </dependency>
+  <dependency>
         <groupId>javassist</groupId>
         <artifactId>javassist</artifactId>
         <version>3.8.0.GA</version>
-    </dependency>
-    <dependency>
+  </dependency>
+  <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-log4j12</artifactId>
         <version>1.5.10</version>
-    </dependency>
-    <dependency>
+  </dependency>
+  <dependency>
         <groupId>antlr</groupId>
         <artifactId>antlr</artifactId>
         <version>2.7.6</version>
-    </dependency>
-    <dependency>
+  </dependency>
+  <dependency>
         <groupId>dom4j</groupId>
         <artifactId>dom4j</artifactId>
         <version>1.6.1</version>
-    </dependency>
-     <dependency>
+  </dependency>
+  <dependency>
         <groupId>commons-collections</groupId>
         <artifactId>commons-collections</artifactId>
         <version>3.2.1</version>
-    </dependency>
-    <dependency>
+  </dependency>
+  <dependency>
         <groupId>javax.transaction</groupId>
         <artifactId>jta</artifactId>
         <version>1.1</version>
-    </dependency>
+  </dependency>
   <!-- THE END -->
+  
+  <!-- SPRING FRAMEWORK -->
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>3.0.5.RELEASE</version>
+</dependency>
+  
+  <!-- SPRING SECURITY -->
+      <dependency>
+          <groupId>org.springframework.security</groupId>
+          <artifactId>spring-security-web</artifactId>
+          <version>3.2.0.RELEASE</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework.security</groupId>
+          <artifactId>spring-security-config</artifactId>
+          <version>3.2.0.RELEASE</version>
+      </dependency>
+  <!-- THE END -->
+  
+  <dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-taglibs</artifactId>
+    <version>4.1.3.RELEASE</version>
+</dependency>
+
+<dependency>
+    <groupId>taglibs</groupId>
+    <artifactId>standard</artifactId>
+    <version>1.1.2</version>
+</dependency>
+  
+  
+  
+  <!-- TO EXECUTE "EL 3 -->
+  <dependency>
+        <groupId>javax.el</groupId>
+        <artifactId>javax.el-api</artifactId>
+        <version>3.0.0</version>
+  </dependency>
+  <dependency>
+        <groupId>org.glassfish.web</groupId>
+        <artifactId>el-impl</artifactId>
+        <version>2.2</version>
+  </dependency>
+  <!-- THE END -->    
   
   <!-- DATA BASE -->  
     <dependency>
@@ -127,5 +179,6 @@
         <scope>test</scope>
     </dependency>
   </dependencies>
-  <!-- THE END -->    
+  <!-- THE END -->
+  
 </project>

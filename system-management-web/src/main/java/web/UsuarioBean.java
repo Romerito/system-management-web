@@ -17,7 +17,7 @@ public class UsuarioBean {
 	private String destinoSalvar;
 	
 	public String novo(){
-		this.destinoSalvar = "usuarioSucesso";//?
+		this.destinoSalvar = "usuarioSucesso";
 		this.usuario = new Usuario();
 		this.usuario.setAtivo(true);
 		return "usuario";
@@ -32,7 +32,7 @@ public class UsuarioBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		String senha = this.usuario.getSenha();
 		if(!senha.equals(this.confirmarSenha)){
-			FacesMessage facesMessage = new FacesMessage("A senha n�o foi confirmada corretamente");
+			FacesMessage facesMessage = new FacesMessage("SENHA CONFIRMADA INCORRETA");
 			context.addMessage(null, facesMessage);
 			return null;
 		}
@@ -57,6 +57,16 @@ public class UsuarioBean {
 		}
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
+		return null;
+	}
+	public String atribuiPermissao(Usuario usuario, String permissao){
+		this.usuario = usuario;
+		java.util.Set<String> permissoes = this.usuario.getPermissao();
+		if(permissoes.contains(permissao)){
+			permissoes.remove(permissao);
+		} else {
+			permissoes.add(permissao);
+		}
 		return null;
 	}
 	

@@ -1,9 +1,14 @@
 package usuario;
 
+
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+/**
+ * @author Romerito Alencar
+ *
+ */
 public class UsuarioDAOHibernate implements UsuarioDAO {
 	private Session session;
 
@@ -17,10 +22,18 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 
 	}
 
+	
 	@Override
 	public void atualizar(Usuario usuario) {
+		if(usuario.getPermissao() == null || usuario.getPermissao().size() == 0){
+			Usuario usuarioPermissao = this.carregar(usuario.getCodigo());
+			usuario.setPermissao(usuarioPermissao.getPermissao());
+			/*
+			 * THE METHOD .evict CLEAN OF CONTEXT PERSISTENCE THIS OBJECT.
+			 */
+			this.session.evict(usuarioPermissao);
+		}
 		this.session.update(usuario);
-
 	}
 
 	@Override
