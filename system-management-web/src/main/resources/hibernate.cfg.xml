@@ -5,15 +5,9 @@
 <hibernate-configuration>
 	<session-factory>
 	
-		<!--  <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
-		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost/systemanagement</property>
-		<property name="connection.username">root</property>
-		<property name="connection.password">1989</property>-->
-            
           <!-- CONNECTION OF DATA SOURCE -->     
-		<property name="connection.datasource">java:comp/env/jdbc/dataSource</property>
-          <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property> 
+		<property name="connection.datasource">java:/MySqlDS</property>
+          <!--  <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property> --> 
                 
 		<!-- Necessario para o filtro: current session nova para cada thread --> 
 		<property name="current_session_context_class">thread</property>

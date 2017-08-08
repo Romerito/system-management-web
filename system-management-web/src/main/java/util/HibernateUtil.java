@@ -11,7 +11,7 @@ public class HibernateUtil {
 		try {
 			AnnotationConfiguration cfg = new AnnotationConfiguration();
 			cfg.configure("hibernate.cfg.xml");
-			return cfg.buildSessionFactory();	
+			return cfg.buildSessionFactory();
 		} catch (Throwable e) {
 			System.out.println("Creat initial object SessionFactory falhou. Errou: " + e);
 			throw new ExceptionInInitializerError(e);

@@ -1,107 +1,145 @@
+/*
+ * Código-fonte do livro "Programação Java para a Web"
+ * Autores: Décio Heinzelmann Luckow <decioluckow@gmail.com>
+ *          Alexandre Altair de Melo <alexandremelo.br@gmail.com>
+ *
+ * ISBN: 978-85-7522-238-6
+ * http://www.javaparaweb.com.br
+ * http://www.novatec.com.br/livros/javaparaweb
+ * Editora Novatec, 2010 - todos os direitos reservados
+ *
+ * LICENÇA: Este arquivo-fonte está sujeito a Atribuição 2.5 Brasil, da licença Creative Commons,
+ * que encontra-se disponível no seguinte endereço URI: http://creativecommons.org/licenses/by/2.5/br/
+ * Se você não recebeu uma cópia desta licença, e não conseguiu obtê-la pela internet, por favor,
+ * envie uma notificação aos seus autores para que eles possam enviá-la para você imediatamente.
+ *
+ *
+ * Source-code of "Programação Java para a Web" book
+ * Authors: Décio Heinzelmann Luckow <decioluckow@gmail.com>
+ *          Alexandre Altair de Melo <alexandremelo.br@gmail.com>
+ *
+ * ISBN: 978-85-7522-238-6
+ * http://www.javaparaweb.com.br
+ * http://www.novatec.com.br/livros/javaparaweb
+ * Editora Novatec, 2010 - all rights reserved
+ *
+ * LICENSE: This source file is subject to Attribution version 2.5 Brazil of the Creative Commons
+ * license that is available through the following URI:  http://creativecommons.org/licenses/by/2.5/br/
+ * If you did not receive a copy of this license and are unable to obtain it through the web, please
+ * send a note to the authors so they can mail you a copy immediately.
+ *
+ */
 package usuario;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.UniqueConstraint;
-@Entity(name = "usuario")
+@Entity
 public class Usuario implements Serializable {
-	private static final long serialVersionUID = -7390392097656238443L;
+
+	private static final long	serialVersionUID	= 2471765773806278661L;
 	@Id
 	@GeneratedValue
-	private Integer codigo;
-	private String nome;
-	private String email;
+	private Integer	codigo;
+	private String	nome;
+	private String	email;
 	@org.hibernate.annotations.NaturalId
-	private String login;
-	private String senha;
-	private Date nascimento;
-	private String celular;
-	private String idioma;
-	private boolean ativo;
-	
+	private String	login;
+	private String	senha;
+	private Date	nascimento;
+	private String	celular;
+	private String	idioma;
+	private boolean	ativo;
+
 	@ElementCollection(targetClass = String.class)
 	@JoinTable(
-			name = "usuario_permissao",
-			uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario","permissao"})},
-			joinColumns = @JoinColumn(name = "usuario"))
-	@Column(name = "permissao", length=50)
-	private Set<String> permissao = new HashSet<String>();
-	
-	
-	
-	public Set<String> getPermissao() {
-		return permissao;
-	}
-	public void setPermissao(Set<String> permissao) {
-		this.permissao = permissao;
-	}
+	           name = "usuario_permissao", 
+			   uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario", "permissao"})}, 
+			   joinColumns = @JoinColumn(name = "usuario"))
+	@Column(name = "permissao", length = 50)
+	private Set<String>	     permissao	        = new HashSet<String>();
+
 	public Integer getCodigo() {
 		return codigo;
 	}
+
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getLogin() {
 		return login;
 	}
+
 	public void setLogin(String login) {
 		this.login = login;
 	}
+
 	public String getSenha() {
 		return senha;
 	}
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
 	public Date getNascimento() {
 		return nascimento;
 	}
+
 	public void setNascimento(Date nascimento) {
 		this.nascimento = nascimento;
 	}
+
 	public String getCelular() {
 		return celular;
 	}
+
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
+
 	public String getIdioma() {
 		return idioma;
 	}
+
 	public void setIdioma(String idioma) {
 		this.idioma = idioma;
 	}
+
 	public boolean isAtivo() {
 		return ativo;
 	}
+
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+
+	public Set<String> getPermissao() {
+		return permissao;
 	}
+
+	public void setPermissao(Set<String> permissao) {
+		this.permissao = permissao;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -118,6 +156,7 @@ public class Usuario implements Serializable {
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -176,6 +215,4 @@ public class Usuario implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 }
