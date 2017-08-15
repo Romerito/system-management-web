@@ -38,27 +38,25 @@ import javax.persistence.*;
 @Entity
 public class Usuario implements Serializable {
 
-	private static final long	serialVersionUID	= 2471765773806278661L;
+	private static final long serialVersionUID = 2471765773806278661L;
 	@Id
 	@GeneratedValue
-	private Integer	codigo;
-	private String	nome;
-	private String	email;
+	private Integer codigo;
+	private String nome;
+	private String email;
 	@org.hibernate.annotations.NaturalId
-	private String	login;
-	private String	senha;
-	private Date	nascimento;
-	private String	celular;
-	private String	idioma;
-	private boolean	ativo;
+	private String login;
+	private String senha;
+	private Date nascimento;
+	private String celular;
+	private String idioma;
+	private boolean ativo;
 
 	@ElementCollection(targetClass = String.class)
-	@JoinTable(
-	           name = "usuario_permissao", 
-			   uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario", "permissao"})}, 
-			   joinColumns = @JoinColumn(name = "usuario"))
+	@JoinTable(name = "usuario_permissao", uniqueConstraints = {
+			@UniqueConstraint(columnNames = { "usuario", "permissao" }) }, joinColumns = @JoinColumn(name = "usuario"))
 	@Column(name = "permissao", length = 50)
-	private Set<String>	     permissao	        = new HashSet<String>();
+	private Set<String> permissao = new HashSet<String>();
 
 	public Integer getCodigo() {
 		return codigo;

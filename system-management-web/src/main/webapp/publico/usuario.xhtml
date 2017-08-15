@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Cadastro de Usuário</title>
 </h:head>
@@ -12,11 +13,12 @@
 		<h:inputHidden value="#{usuarioBean.usuario.codigo}"/>
 		<h:inputHidden value="#{usuarioBean.usuario.ativo}"/>
 		<h:inputHidden value="#{usuarioBean.destinoSalvar}"/> 
+		<h:inputHidden value="#{usuarioBean.senhaCriptografada}"/>
 		
 		
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Nome:" for="nome"/>
-			<h:inputText id="nome" label="Nome" value="#{usuarioBean.usuario.nome}" size="30" maxlength="30" required="true" requiredMessage="Você não tem nome?">
+			<h:inputText id="nome" label="Nome" value="#{usuarioBean.usuario.nome}" size="50" maxlength="50" required="true" requiredMessage="Você não tem nome?">
 			<f:validateLength minimum="10" maximum="30"/>
 			</h:inputText>
 			
@@ -49,10 +51,10 @@
 				</h:inputText>
 			
 		    <h:outputLabel value="Senha:" for="senha"/>
-		    <h:inputSecret id="senha" label="Senha" value="#{usuarioBean.usuario.senha}" size="10" maxlength="10" required="true" redisplay="true"/>
-		    
+		    <h:inputSecret id="senha" label="Senha" value="#{usuarioBean.usuario.senha}" size="15" maxlength="10" required="#{empty contextoBean.usuarioLogado}" redisplay="false"/>
+
 		    <h:outputLabel value="Confirmar Senha" for="confirmarsenha"/>
-		    <h:inputSecret id="confirmarsenha" label="Confirmar Senha" value="#{usuarioBean.confirmarSenha}" size="10" maxlength="10" required="true" redisplay="true"/>
+		    <h:inputSecret id="confirmarsenha" label="Confirmar Senha" value="#{usuarioBean.confirmarSenha}" size="15" maxlength="10" required="#{empty contextoBean.usuarioLogado}" redisplay="false"/>
 		</h:panelGrid>
 			<h:commandButton action="#{usuarioBean.salvar}" value="Salvar"/>
 	</h:form>

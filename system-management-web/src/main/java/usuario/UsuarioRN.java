@@ -8,6 +8,11 @@ public class UsuarioRN{
 	public UsuarioRN(){
 		this.usuarioDAO = DAOFactory.criarUsuarioDAO();
 	}
+	
+	public Usuario buscarPorLogin(String login){
+		return this.usuarioDAO.buscarPorLogin(login);
+	}
+	
 	public void salvar(Usuario usuario) {
 		Integer codigo = usuario.getCodigo();
 		if(codigo == null || codigo == 0){

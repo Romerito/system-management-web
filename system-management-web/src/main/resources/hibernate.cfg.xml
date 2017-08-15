@@ -7,14 +7,16 @@
 	
           <!-- CONNECTION OF DATA SOURCE -->     
 		<property name="connection.datasource">java:/MySqlDS</property>
-          <!--  <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property> --> 
                 
-		<!-- Necessario para o filtro: current session nova para cada thread --> 
+		<!-- REQUIRED FOR THE CONNECTION FILTER --> 
 		<property name="current_session_context_class">thread</property>
-		<!-- Cria a estrutura da tabela com base na persistencia mapeada -->
+		
+          <!-- TABLE STRUCTURE BASED ON PERSISTENCE -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		
-		<mapping class="usuario.Usuario"/>  
+          <!-- ENTITIES -->      
+		<mapping class = "usuario.Usuario"/>
+          <mapping class = "conta.Conta"/>        
 		
 	</session-factory>
 </hibernate-configuration>
