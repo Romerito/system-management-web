@@ -12,7 +12,7 @@ import conta.ContaRN;
 import usuario.Usuario;
 import usuario.UsuarioRN;
 
-@ManagedBean(name = "contextBean")
+@ManagedBean(name="contextoBean")
 @SessionScoped
 public class ContextoBean {
 	 

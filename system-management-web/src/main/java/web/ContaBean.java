@@ -2,9 +2,11 @@ package web;
 
 import java.util.List;
 
-import javax.faces.bean.*;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import conta.Conta;
+import conta.ContaRN;
 import util.ContextoUtil;
 
 @ManagedBean(name = "contaBean")
@@ -16,7 +18,12 @@ public class ContaBean {
 	
 	public void salvar(){
 		ContextoBean contextoBean = ContextoUtil.getContextoBean();
+		this.selecionada.setUsuario(contextoBean.getUsuarioLogado());
+		ContaRN contaRN = new ContaRN();
+		contaRN.salvar(this.selecionada);
 		
+		this.selecionada = new Conta();
+		this.lista = null;
 	}
 	
 	public void editar(){
@@ -24,11 +31,16 @@ public class ContaBean {
 	}
 	
 	public void excluir(){
-		
+		ContaRN contaRN = new ContaRN();
+		contaRN.excluir(this.selecionada);
+		this.selecionada = new Conta();
+		this.lista = null;
 	}
 	
 	public void tornarFavorita(){
-		
+		ContaRN contaRN = new ContaRN();
+		contaRN.tornarFavorita(this.selecionada);
+		this.selecionada = new Conta();
 	}
 
 	public Conta getSelecionada() {
@@ -40,7 +52,13 @@ public class ContaBean {
 	}
 
 	public List<Conta> getLista() {
-		return lista;
+		if(this.lista == null) {
+			ContextoBean  contextoBean = ContextoUtil.getContextoBean();
+			ContaRN contaRN = new ContaRN();
+			this.lista = contaRN.listar(contextoBean.getUsuarioLogado());
+		}
+		
+		return this.lista;
 	}
 
 	public void setLista(List<Conta> lista) {

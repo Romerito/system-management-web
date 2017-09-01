@@ -3,6 +3,7 @@ package conta;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -19,8 +20,11 @@ public class ContaDAOHibernate implements ContaDAO{
 
 	@Override
 	public void salvar(Conta conta) {
-		this.session.saveOrUpdate(conta);
-		
+		try {
+			this.session.saveOrUpdate(conta);
+		} catch(HibernateException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -34,7 +38,6 @@ public class ContaDAOHibernate implements ContaDAO{
 		return (Conta) this.session.get(Conta.class, conta);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Conta> listar(Usuario usuario) {
 		Criteria criteria = this.session.createCriteria(Conta.class);

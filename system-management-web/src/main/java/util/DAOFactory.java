@@ -15,7 +15,7 @@ public class DAOFactory {
 	
 	public static ContaDAO criarContaDAO(){
 		ContaDAOHibernate contaDAO = new ContaDAOHibernate();
-		contaDAO.setSession(HibernateUtil.getSessionFactory().openSession());
+		contaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return contaDAO;
 	}
 

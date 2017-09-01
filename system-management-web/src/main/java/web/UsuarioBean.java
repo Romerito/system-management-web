@@ -8,6 +8,8 @@ import javax.faces.context.FacesContext;
 
 import org.springframework.util.DigestUtils;
 
+import conta.Conta;
+import conta.ContaRN;
 import usuario.Usuario;
 import usuario.UsuarioRN;
 @ManagedBean(name="usuarioBean")
@@ -18,6 +20,7 @@ public class UsuarioBean {
 	private List<Usuario> lista;
 	private String destinoSalvar;
 	private String senhaCriptografada;
+	private Conta conta = new Conta();
 	
 	
 	public String novo(){
@@ -49,7 +52,15 @@ public class UsuarioBean {
 		}
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
-		return "/admin/principal";
+		
+		if(this.conta.getDescricao() != null) {
+			this.conta.setUsuario(this.usuario);
+			this.conta.setFavorita(true);
+			ContaRN contaRN = new ContaRN();
+			contaRN.salvar(this.conta);
+		}
+		
+		return this.destinoSalvar;
 	}
 	
 	public String excluir(){
@@ -88,7 +99,14 @@ public class UsuarioBean {
 		}
 		return lista;
 	}
-
+	
+	
+	public Conta getConta() {
+		return conta;
+	}
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
 	public String getSenhaCriptografada() {
 		return senhaCriptografada;
 	}

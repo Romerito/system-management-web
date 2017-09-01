@@ -11,7 +11,7 @@ public class teste {
 			System.out.println("Conectou");
 					
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Class of test");
 		}
 	}
 }

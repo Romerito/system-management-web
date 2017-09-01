@@ -19,7 +19,7 @@
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Nome:" for="nome"/>
 			<h:inputText id="nome" label="Nome" value="#{usuarioBean.usuario.nome}" size="50" maxlength="50" required="true" requiredMessage="Você não tem nome?">
-			<f:validateLength minimum="10" maximum="30"/>
+			<f:validateLength minimum="10" maximum="50"/>
 			</h:inputText>
 			
 			<h:outputLabel value="Data Nascimento:" for="data"/>
@@ -56,7 +56,21 @@
 		    <h:outputLabel value="Confirmar Senha" for="confirmarsenha"/>
 		    <h:inputSecret id="confirmarsenha" label="Confirmar Senha" value="#{usuarioBean.confirmarSenha}" size="15" maxlength="10" required="#{empty contextoBean.usuarioLogado}" redisplay="false"/>
 		</h:panelGrid>
-			<h:commandButton action="#{usuarioBean.salvar}" value="Salvar"/>
+		
+		<h:panelGroup rendered="#{empty contextBean.usuarioLogado}">
+		  <fieldset><legend>Conta Inicial</legend>
+		  <h:panelGrid columns="2">
+		     <h:outputLabel value="Descrição: "  for="descricao"/>
+		     <h:inputText id="descricao" label="Descrição" value="#{usuarioBean.conta.descricao}" required="true" maxlength="45"/>
+		  
+		     <h:outputLabel value="Saldo Inicial: " for="saldoInicial" />
+		     <h:inputText id="saldoInicial" value="#{usuarioBean.conta.saldoInicial}" size="10">
+		     <f:convertNumber minFractionDigits="2"/>
+		     </h:inputText>
+		  </h:panelGrid>
+		  </fieldset> 
+		</h:panelGroup>
+       <h:commandButton action="#{usuarioBean.salvar}" value="Salvar"/>
 	</h:form>
 	<hr/>
 </h:body>

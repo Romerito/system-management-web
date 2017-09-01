@@ -16,21 +16,22 @@ xmlns:f="http://java.sun.com/jsf/core">
 		  Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}
 		</h:panelGroup>
 	     
-	     <form id="login" method="post" action="#{request.contextPath}/j_spring_security_check">
-		<table>
+	     <form id="login" method="get" action="#{request.contextPath}/j_spring_security_check">
+		 <table>
 		    <tr>
 		       <td>Login</td>
 		       <td><input type='text' name='j_username'/></td>
 		    </tr>
 		    <tr>
-		     <td>Senha</td>
-		     <td><input type='password' name='j_password'/></td>
+		       <td>Senha</td>
+		       <td><input type='password' name='j_password'/></td>
 		    </tr>
 		    <tr>
-		      <td align="right">
-		        <input type='checkbox' name='_spring_security_remember_me'/>
-		      </td>
-		      <td>Gravar a senha! </td> 
+		       <td align="right">
+		       		<input type="checkbox" name="_spring_security_remember_me"/>
+		       </td>
+		      
+		       <td>Entrar Automaticamente </td> 
 		    </tr>
 		    <tr>
 		      <td><input type='submit' value='Entrar'/></td>
