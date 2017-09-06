@@ -52,14 +52,14 @@
 	         <h:column>
 	         <h:commandLink action="#{contaBean.tornarFavorita}">
 	           <f:ajax execute="@this" render=":listagem"/>
-	           <h:graphicImage library="imagens" name="favorita16_#{conta.favorita}"/>
+	           <h:graphicImage library="imagens" name="favorita16_#{conta.favorita}.png"/>
 	           <f:setPropertyActionListener value="#{conta}" target="#{contaBean.selecionada}"/>
 	         </h:commandLink>
 	         </h:column>
 	         <h:column>
 	          <h:commandLink>
 	            <f:ajax execute="@this" render=":edicao" />
-	            <h:graphicImage value="imagens" name="editar16.png"/>
+	            <h:graphicImage library="imagens" name="editar16.png"/>
 	            <f:setPropertyActionListener value="#{conta}" target="#{contaBean.selecionada}"/>   
 	          </h:commandLink>
 	         </h:column>
