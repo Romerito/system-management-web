@@ -7,43 +7,44 @@ import usuario.Usuario;
 import util.DAOFactory;
 
 public class ContaRN {
-	
+
 	private ContaDAO contaDAO;
-	
+
 	public ContaRN() {
 		this.contaDAO = DAOFactory.criarContaDAO();
-		
+
 	}
-	
-	public List<Conta> listar(Usuario usuario){
+
+	public List<Conta> listar(Usuario usuario) {
 		return this.contaDAO.listar(usuario);
 	}
-	
-	public Conta carregar(Integer conta){
+
+	public Conta carregar(Integer conta) {
 		return this.contaDAO.carregar(conta);
 	}
-	
-	public void salvar(Conta conta){
+
+	public void salvar(Conta conta) {
 		conta.setDataCadastro(new Date());
 		this.contaDAO.salvar(conta);
-		
+
 	}
-	
-	public void excluir(Conta conta){
+
+	public void excluir(Conta conta) {
 		this.contaDAO.excluir(conta);
 	}
-	
-	public void tornarFavorita(Conta contaFavorita){
+
+	public void tornarFavorita(Conta contaFavorita) {
 		Conta conta = this.buscarFavorita(contaFavorita.getUsuario());
-		if(conta != null){
+		if (conta != null) {
 			conta.setFavorita(false);
 			this.contaDAO.salvar(conta);
-		} 
-		    conta.setFavorita(true);
-		    this.contaDAO.salvar(conta);
-	}
-		public Conta buscarFavorita(Usuario usuario){
-			return this.contaDAO.buscarFavorita(usuario);
+		} else {
+			contaFavorita.setFavorita(true);
+			this.contaDAO.salvar(contaFavorita);
 		}
 	}
 
+	public Conta buscarFavorita(Usuario usuario) {
+		return this.contaDAO.buscarFavorita(usuario);
+	}
+}

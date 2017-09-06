@@ -41,6 +41,7 @@ public class ContaBean {
 		ContaRN contaRN = new ContaRN();
 		contaRN.tornarFavorita(this.selecionada);
 		this.selecionada = new Conta();
+		this.lista = null;
 	}
 
 	public Conta getSelecionada() {
