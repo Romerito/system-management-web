@@ -18,7 +18,10 @@ public class ContextoBean {
 	 
 	private Usuario usuarioLogado = null;
 	private Conta contaAtiva = null;
-	
+
+	public void setContaAtiva(Conta contaAtiva) {
+		this.contaAtiva = contaAtiva;
+	}
 	public Usuario getUsuarioLogado(){
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext external = context.getExternalContext();
