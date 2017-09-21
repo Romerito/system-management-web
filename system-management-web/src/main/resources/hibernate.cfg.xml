@@ -17,6 +17,7 @@
           <!-- ENTITIES -->      
 		<mapping class = "usuario.Usuario" />
         <mapping class = "conta.Conta" />        
+        <mapping class = "categoria.Categoria" />
 		
 	</session-factory>
 </hibernate-configuration>

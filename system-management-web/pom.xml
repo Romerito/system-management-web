@@ -27,6 +27,14 @@
         <name>Spring Milestones</name>
         <url>https://repo.spring.io/libs-milestone</url>
     </repository>
+    
+      <repository>
+        <id>Prime-Faces</id>
+        <name>Prime Faces</name>
+        <url>http://repository.primefaces.org/</url>
+    </repository>
+    
+    
   </repositories> 
 
   <!-- UTF-8 -->
@@ -68,12 +76,13 @@
   </dependency>
   <!-- THE END -->
   
-  <!-- PRIMEFACES 6.0  -->
+  <!-- PRIMEFACES 2.1  -->
   <dependency>
-        <groupId>org.primefaces</groupId>
-        <artifactId>primefaces</artifactId>
-        <version>6.0</version>
- </dependency>
+    	<groupId>org.primefaces</groupId>
+    	<artifactId>primefaces</artifactId>
+   		<version>2.1</version>
+  </dependency>
+
     
   <!-- HIBERNATE 3.5.2 -->
   <dependency>
@@ -91,7 +100,7 @@
         <artifactId>hibernate-entitymanager</artifactId>
         <version>3.5.2-Final</version>
   </dependency>
-  
+
   <dependency>
         <groupId>javassist</groupId>
         <artifactId>javassist</artifactId>

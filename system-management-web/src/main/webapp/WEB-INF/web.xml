@@ -1,71 +1,72 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-         xmlns="http://java.sun.com/xml/ns/javaee" 
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-                             http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
-                             id="WebApp_ID" version="2.5">
-  <display-name>system-manageHibernate</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <servlet-name>FacesServlet</servlet-name>
-    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>FacesServlet</servlet-name>
-    <url-pattern>*.jsf</url-pattern>
-  </servlet-mapping>
-  <!-- Cria um filter de conexao com o banco pelo servido abri e fecha pela nevegação open show in view -->
-  <filter>
-  	<filter-name>conexaoFilter</filter-name>
-  	<filter-class>web.filter.ConexaoHibernateFilter</filter-class>
-  </filter>
-  <filter-mapping>
-  	<filter-name>conexaoFilter</filter-name>
-  	<url-pattern>/*</url-pattern>
-  </filter-mapping>
-  
-  <!-- Configure DataSource JNDI -->
-  <resource-ref>
-    <description>DataSource MySqlDS</description>
-    <res-ref-name>java:comp/MySqlDS</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-    <res-sharing-scope>Shareable</res-sharing-scope>
- </resource-ref>
- 
- <!-- Spring Security -->
- 
- <context-param>
-   <param-name>contextConfigLocation</param-name>
-   <param-value>
-   	/WEB-INF/applicationContext.xml
-   	/WEB-INF/applicationContext-security.xml
-   </param-value>
- </context-param>
- <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  
-   </filter>
-   <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-   </filter-mapping>
-   <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-   </listener> 
-   
- <!-- TO EXECUTE EL 3.0 -->
- <context-param>
-        <param-name>com.sun.faces.expressionFactory</param-name>
-        <param-value>com.sun.el.ExpressionFactoryImpl</param-value>
- </context-param>  
- <!-- THE END --> 
+<?xml version="1.0"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee  
+	                    http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>system-manageHibernate</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<!-- JSF -->
+	<servlet>
+		<servlet-name>FacesServlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FacesServlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+
+	<!-- Show in view -->
+	<filter>
+		<filter-name>conexaoFilter</filter-name>
+		<filter-class>web.filter.ConexaoHibernateFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>conexaoFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- DataSource -->
+	<resource-ref>
+		<description>DataSource MySqlDS</description>
+		<res-ref-name>java:comp/MySqlDS</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+
+	<!-- Spring Security -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+		   	/WEB-INF/applicationContext.xml
+		   	/WEB-INF/applicationContext-security.xml
+       </param-value>
+    </context-param>
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- TO EXECUTE EL 3.0 -->
+	<context-param>
+		<param-name>com.sun.faces.expressionFactory</param-name>
+		<param-value>com.sun.el.ExpressionFactoryImpl</param-value>
+	</context-param>
+	<!-- THE END -->
 </web-app>
