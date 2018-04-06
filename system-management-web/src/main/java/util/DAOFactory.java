@@ -2,6 +2,8 @@ package util;
 
 import categoria.CategoriaDAO;
 import categoria.CategoriaDAOHibernate;
+import cliente.ClienteDAO;
+import cliente.ClienteDAOHibernate;
 import conta.ContaDAO;
 import conta.ContaDAOHibernate;
 import usuario.UsuarioDAO;
@@ -23,6 +25,11 @@ public class DAOFactory {
 		CategoriaDAOHibernate categoriaDAO = new CategoriaDAOHibernate();
 		categoriaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return categoriaDAO;
+	}
+	public static ClienteDAO criarClenteDAO(){
+		ClienteDAOHibernate clienteDAO = new ClienteDAOHibernate();
+		clienteDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return clienteDAO;
 	}
 
 }

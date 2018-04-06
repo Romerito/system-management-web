@@ -5,10 +5,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-/**
- * @author Romerito Alencar
- *
- */
 public class UsuarioDAOHibernate implements UsuarioDAO {
 	private Session session;
 
@@ -21,9 +17,6 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 		this.session.save(usuario);
 
 	}
-
-	
-	@Override
 	public void atualizar(Usuario usuario) {
 		if(usuario.getPermissao() == null || usuario.getPermissao().size() == 0){
 			Usuario usuarioPermissao = this.carregar(usuario.getCodigo());

@@ -1,5 +1,6 @@
 package usuario;
 import java.util.List;
+
 public interface UsuarioDAO {
 	public void salvar(Usuario usuario);
 	public void atualizar(Usuario usuario);

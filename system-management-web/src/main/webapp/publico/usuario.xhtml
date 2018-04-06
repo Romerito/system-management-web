@@ -26,7 +26,7 @@
 				
 				<h:outputLabel value="Data Nascimento:" for="data"/>
 				<h:inputText id="data" label="Data Nascimento" value="#{usuarioBean.usuario.nascimento}" size="10" maxlength="10" required="true">
-					<f:convertDateTime dateStyle="medium"/>
+					<f:convertDateTime pattern="dd/MM/yyyy" />
 				</h:inputText>
 				
 				<h:outputLabel value="Celular:" for="celular"/>
@@ -57,7 +57,6 @@
 				             value="#{usuarioBean.usuario.login}" 
 				             size="15" maxlength="15" required="true"
 				             validatorMessage="Login deve ter no mínimo 5 e no máximo 15 caracters e só pode ter os simbolos '.' e '_'.">
-					<f:validateRegex pattern="([a-z]|[0-9]|[.]|[_]){5,15}"/>
 				</h:inputText>
 	
 				<h:outputLabel value="Senha:" for="senha"/>
