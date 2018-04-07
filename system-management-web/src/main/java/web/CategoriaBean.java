@@ -15,14 +15,14 @@ import categoria.Categoria;
 import categoria.CategoriaRN;
 import util.ContextoUtil;
 
-@ManagedBean(name="categoriaBean")
+@ManagedBean(name = "categoriaBean")
 @RequestScoped
 public class CategoriaBean {
 
-	private TreeNode         categoriasTree;
-	private Categoria        editada = new Categoria();
+	private TreeNode categoriasTree;
+	private Categoria editada = new Categoria();
 	private List<SelectItem> categoriasSelect;
-	private boolean          mostraEdicao = false;
+	private boolean mostraEdicao = false;
 
 	public void novo() {
 		Categoria pai = null;

@@ -5,19 +5,20 @@
 <hibernate-configuration>
 	<session-factory>
 	
-          <!-- CONNECTION OF DATA SOURCE -->     
+        <!-- CONNECTION OF DATA SOURCE -->     
 		<property name="connection.datasource">java:/MySqlDS</property>
                 
 		<!-- REQUIRED FOR THE CONNECTION FILTER --> 
 		<property name="current_session_context_class">thread</property>
 		
-          <!-- TABLE STRUCTURE BASED ON PERSISTENCE -->
+        <!-- TABLE STRUCTURE BASED ON PERSISTENCE -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		
-          <!-- ENTITIES -->      
+        <!-- ENTITIES -->      
 		<mapping class = "usuario.Usuario" />
         <mapping class = "conta.Conta" />        
         <mapping class = "categoria.Categoria" />
+        <mapping class = "cliente.Cliente" />
 		
 	</session-factory>
 </hibernate-configuration>

@@ -12,8 +12,8 @@ public class Usuario implements Serializable {
 	@GeneratedValue
 	private Integer codigo;
 	private String nome;
-	private String email;
 	@org.hibernate.annotations.NaturalId
+	private String email;
 	private String login;
 	private String senha;
 	private Date nascimento;

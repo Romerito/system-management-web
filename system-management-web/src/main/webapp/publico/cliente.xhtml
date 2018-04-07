@@ -19,7 +19,7 @@
 			
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Nome:" for="nome"/>
-				<h:inputText id="nome" label="Nome" value="#{usuarioBean.usuario.nome}" size="30" maxlength="30" required="true" requiredMessage="Nome?">
+				<h:inputText id="nome" label="Nome" value="#{clienteBean.clinte.nome}" size="30" maxlength="30" required="true" requiredMessage="Nome?">
 					<f:validateLength minimum="10" maximum="30"/>
 				</h:inputText>
 				
@@ -47,13 +47,13 @@
 				</h:inputText>
 				
 				<h:outputLabel value="Celular:" for="celular"/>
-				<h:inputText id="celular" label="Celular" value="#{clienteBean.clinte.celular}" size="10"/>
+				<h:inputText id="celular" label="Celular" value="#{clienteBean.clinte.celular}" size="15" maxlength="15" />
 				
 				<h:outputLabel value="e-Mail:" for="email"/>
 				<h:panelGroup>
 					<h:inputText id="email" 
 						label="e-Mail" 
-						value="#{usuarioBean.usuario.email}" 
+						value="#{clienteBean.clinte.email}" 
 						size="30" maxlength="30" required="true" 
 						validatorMessage="e-Mail inválido">
 						<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+"/>
