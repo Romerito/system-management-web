@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+<ui:composition template="/templates/interna.xhtml">
+
+	<ui:define name="titulo">
+    	Cadastro de Clientes
+	</ui:define>
+
+	<ui:define name="corpo">
+		<h:form id="cadastro">
+			<h:messages/>
+			<h:inputHidden value="#{clienteBean.clinte.codigo}"/>
+			<h:inputHidden value="#{usuarioBean.destinoSalvar}"/>
+			
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Nome:" for="nome"/>
+				<h:inputText id="nome" label="Nome" value="#{usuarioBean.usuario.nome}" size="30" maxlength="30" required="true" requiredMessage="Nome?">
+					<f:validateLength minimum="10" maximum="30"/>
+				</h:inputText>
+				
+				<h:outputLabel value="Endereço:" for="endereco"/>
+				<h:inputText id="endereco" label="Endereço" value="#{clienteBean.clinte.endereco}" size="30" maxlength="30" required="true" requiredMessage="Endereço?">
+					<f:validateLength minimum="10" maximum="30"/>
+				</h:inputText>
+				
+				<h:outputLabel value="Numero:" for="numero"/>
+				<h:inputText id="numero" label="Numero" value="#{clienteBean.clinte.numero}" size="5" maxlength="10" required="true" requiredMessage="Número?">
+					<f:validateLength minimum="1" maximum="10"/>
+				</h:inputText>
+				
+				<h:outputLabel value="CEP:" for="cep"/>
+				<h:inputText id="cep" label="cep" value="#{clienteBean.clinte.cep}" size="10" maxlength="10" required="true" requiredMessage="CEP?">
+					<f:validateLength minimum="9" maximum="10"/>
+				</h:inputText>
+				
+				<h:outputLabel value="Cidade:" for="cidade"/>
+					<h:inputText id="cidade" label="cidade" value="#{clienteBean.clinte.cidade}" size="30" maxlength="30" required="true" requiredMessage="Cidade?">
+				</h:inputText>
+				
+				<h:outputLabel value="CPF:" for="cpf"/>
+					<h:inputText id="cpf" label="cpf" value="#{clienteBean.clinte.cpf}" size="15" maxlength="15" required="true" requiredMessage="CPF?">
+				</h:inputText>
+				
+				<h:outputLabel value="Celular:" for="celular"/>
+				<h:inputText id="celular" label="Celular" value="#{clienteBean.clinte.celular}" size="10"/>
+				
+				<h:outputLabel value="e-Mail:" for="email"/>
+				<h:panelGroup>
+					<h:inputText id="email" 
+						label="e-Mail" 
+						value="#{usuarioBean.usuario.email}" 
+						size="30" maxlength="30" required="true" 
+						validatorMessage="e-Mail inválido">
+						<f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+"/>
+					</h:inputText>
+					<h:message for="email"/> 
+				</h:panelGroup>
+			<h:commandButton action="#{clienteBean.salvar}" value="Salvar"/>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

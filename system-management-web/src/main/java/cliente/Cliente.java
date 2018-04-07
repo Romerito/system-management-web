@@ -16,8 +16,9 @@ public class Cliente implements Serializable {
 	private String numero;
 	private String cep;
 	private String cidade;
+	@org.hibernate.annotations.NaturalId
 	private String cpf;
-	private String telefone;
+	private String celular;
 	private String email;
 
 	public Integer getCodigo() {
@@ -76,12 +77,12 @@ public class Cliente implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public String getCelular() {
+		return celular;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setCelular(String celular) {
+		this.celular = celular;
 	}
 
 	public String getEmail() {
@@ -104,7 +105,7 @@ public class Cliente implements Serializable {
 		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
-		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
+		result = prime * result + ((celular == null) ? 0 : celular.hashCode());
 		return result;
 	}
 
@@ -157,10 +158,10 @@ public class Cliente implements Serializable {
 				return false;
 		} else if (!numero.equals(other.numero))
 			return false;
-		if (telefone == null) {
-			if (other.telefone != null)
+		if (celular == null) {
+			if (other.celular != null)
 				return false;
-		} else if (!telefone.equals(other.telefone))
+		} else if (!celular.equals(other.celular))
 			return false;
 		return true;
 	}
